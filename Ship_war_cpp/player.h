@@ -74,6 +74,13 @@ public:
 		placementShip();
 	}
 
+	void setPlayer(int max_ship_size) {
+		setMaxShipSize(max_ship_size);
+		this->s = new Ship[this->max_ship_size];
+		generationShips();
+		placementShip();
+	}
+
 	void setMaxShipSize(int max_ship_size) {
 		this->max_ship_size = (max_ship_size != 0) ? abs(max_ship_size) : 4;
 	}

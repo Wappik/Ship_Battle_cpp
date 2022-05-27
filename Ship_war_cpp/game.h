@@ -20,11 +20,19 @@ private:
 public:
 
 	Game() {
-		
+		setMaxShipSize(4);
+		this->player.setPlayer(max_ship_size);
+		this->computer.setComputer(max_ship_size);
 	}
 
 	Game(int max_ship_size) {
+		setMaxShipSize(max_ship_size);
+		this->player.setPlayer(this->max_ship_size);
+		this->computer.setComputer(this->max_ship_size);
+	}
 
+	void setMaxShipSize(int max_ship_size) {
+		this->max_ship_size = (max_ship_size != 0) ? abs(max_ship_size) : 4;
 	}
 
 
