@@ -4,11 +4,11 @@
 #include<cmath>
 #include"ship_war.h"
 using namespace std;
-using namespace ship_war;
 
 
 class Player {
 private:
+
 	string input_player;
 	Point input_player_coords;
 	Ship_war_field field;
@@ -74,6 +74,13 @@ public:
 		placementShip();
 	}
 
+	void setPlayer(int max_ship_size) {
+		setMaxShipSize(max_ship_size);
+		this->s = new Ship[this->max_ship_size];
+		generationShips();
+		placementShip();
+	}
+
 	void setMaxShipSize(int max_ship_size) {
 		this->max_ship_size = (max_ship_size != 0) ? abs(max_ship_size) : 4;
 	}
@@ -82,13 +89,20 @@ public:
 		return input_player_coords;
 	}
 
+	Ship_war_field getField() {
+		return field;
+	}
+
 	Point inputPlayer() {
 		do {
+			cout << "You: ";
 			getline(cin, input_player);
 			input_player = getRidOfExcess();
 			if (correctInputPlayer()) {
-				input_player_coords.x = int(input_player[0]) - 64 + 13;
-				input_player_coords.y = ((input_player[1] == '1' && input_player[2] == '0') ? 10 : int(input_player[1]) - 48) + 1;
+				cout << input_player << endl;
+				//input_player_coords.x = int(input_player[0]) - 64 + 13;
+				input_player_coords.y = int(input_player[0]) - ((int(input_player[0]) > 64 && int(input_player[0]) < 75) ? 64 : 96) + 13;
+				input_player_coords.x = ((input_player[1] == '1' && input_player[2] == '0') ? 10 : int(input_player[1]) - 48) + 1;
 				break;
 			}
 			else {
@@ -97,6 +111,4 @@ public:
 		} while (!correctInputPlayer());
 		return input_player_coords;
 	}
-
-
 };
