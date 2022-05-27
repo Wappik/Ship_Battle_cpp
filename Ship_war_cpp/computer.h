@@ -55,6 +55,10 @@ public:
 		this->max_ship_size = (max_ship_size != 0) ? abs(max_ship_size) : 4;
 	}
 
+	Ship_war_field getField() {
+		return field;
+	}
+
 	Point getComputerCoords() {
 		return computer_coords;
 	}
