@@ -4,11 +4,11 @@
 #include<cmath>
 #include"ship_war.h"
 using namespace std;
-using namespace ship_war;
 
 
 class Player {
 private:
+
 	string input_player;
 	Point input_player_coords;
 	Ship_war_field field;
@@ -97,6 +97,4 @@ public:
 		} while (!correctInputPlayer());
 		return input_player_coords;
 	}
-
-
 };

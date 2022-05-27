@@ -6,7 +6,6 @@
 #include"ship_war.h"
 #include"game_field.h"
 using namespace std;
-using namespace ship_war;
 
 string getRidOfExcess(string a) {
 	string b = "";
